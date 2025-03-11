@@ -1,13 +1,17 @@
 import React from "react";
 
-// https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&season=2024
-
-const TeamCard = ({ logoUrl, teamName, wins, losses }) => {
+const TeamCard = ({ teamId, teamName, teamAbbreviation, wins, losses }) => {
   return (
-    <div className="grid justify-center items-center p-4 bg-gray-900 text-amber-50">
-      <img src={logoUrl} alt={teamName} />
-      <p className="text-2xl font-semibold">{teamName}</p>
-      <p className="font-bold">
+    <div
+      className={`${teamAbbreviation.toLowerCase()} flex flex-col justify-center items-center p-4 rounded-xl bg-gray-900 text-gray-100 text-center`}
+    >
+      <img
+        src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${teamId}.svg`}
+        alt={teamName}
+        className="h-8"
+      />
+      <p className="mt-3 mb-2 font-bold">{teamName}</p>
+      <p className="font-semibold text-gray-200 text-2xl">
         {wins} - {losses}
       </p>
     </div>
