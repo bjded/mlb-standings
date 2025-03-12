@@ -1,27 +1,54 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchTeamData } from "@/utils/api";
+import {
+  fetchTeamData,
+  fetchStandings,
+  fetchCombinedStandings,
+} from "@/utils/api";
 import TeamCard from "@/components/TeamCard";
 
 export default function Home() {
-  const [teams, setTeams] = useState([]);
+  // const [teams, setTeams] = useState([]);
+
+  // useEffect(() => {
+  //   const loadTeams = async () => {
+  //     const teamData = await fetchTeamData(2000);
+  //     setTeams(teamData);
+  //   };
+
+  //   loadTeams();
+  // }, []);
+
+  const [standings, setStandings] = useState([]);
 
   useEffect(() => {
-    // Fetch team data on component mount
-    const loadTeams = async () => {
-      const teamData = await fetchTeamData();
-      setTeams(teamData);
+    const loadStandings = async () => {
+      //const standingsData = await fetchStandings();
+      const standingsData = await fetchCombinedStandings(2024);
+      console.log(standingsData);
+      setStandings(standingsData);
     };
 
-    loadTeams();
+    loadStandings();
   }, []);
 
   return (
     <div>
       <h1 className="my-4 text-4xl font-bold text-center">MLB Standings</h1>
       <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-center items-center gap-2 pt-0 p-6">
-        {teams.map((team) => (
+        {standings.map((standing) => (
+          <TeamCard
+            key={standing.team.id}
+            teamId={standing.team.id}
+            teamName={standing.team.name}
+            teamAbbreviation={standing.abbreviation}
+            wins={standing.leagueRecord.wins}
+            losses={standing.leagueRecord.losses}
+          />
+        ))}
+
+        {/* {teams.map((team) => (
           <TeamCard
             key={team.id}
             teamId={team.id}
@@ -30,7 +57,7 @@ export default function Home() {
             wins="0"
             losses="0"
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );

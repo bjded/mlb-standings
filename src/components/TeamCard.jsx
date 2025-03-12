@@ -8,9 +8,11 @@ const TeamCard = ({ teamId, teamName, teamAbbreviation, wins, losses }) => {
       <img
         src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${teamId}.svg`}
         alt={teamName}
-        className="h-8"
+        className="h-10"
       />
-      <p className="mt-3 mb-2 font-bold">{teamName}</p>
+      <p className="mt-3 mb-1 font-bold">
+        {teamName} {teamId}
+      </p>
       <p className="font-semibold text-gray-200 text-2xl">
         {wins} - {losses}
       </p>
