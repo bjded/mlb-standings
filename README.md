@@ -1,4 +1,4 @@
-## TODO
+## ENDPOINTS
 
 Teams: Retrieve information about MLB teams.
 /api/v1/teams
