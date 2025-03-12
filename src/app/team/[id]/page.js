@@ -21,7 +21,7 @@ const TeamPage = () => {
 
   return (
     <div>
-      <h1 className="my-2 text-4xl font-bold text-center">Team Page</h1>
+      <h1 className="my-4 text-4xl font-bold text-center">Team Page</h1>
       <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-2 pt-0 p-6">
         <Link href="/" className="col-span-full">
           <span className="border-b-2 text-blue-400 font-bold m-auto">
