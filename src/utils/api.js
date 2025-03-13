@@ -35,6 +35,22 @@ export const fetchTeamById = async (id) => {
   }
 };
 
+export const fetchSchedule = async (season = defaultSeason) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_MLB_API}/schedule?sportId=1`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch team data.");
+    }
+    const data = await response.json();
+    return data.dates.flatMap((record) => record.games);
+  } catch (error) {
+    console.error("Error fetching team data:", error);
+    return [];
+  }
+};
+
 export const fetchStandings = async (season = defaultSeason) => {
   try {
     const response = await fetch(

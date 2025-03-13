@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { fetchTeamById } from "@/utils/api";
+import NavBar from "@/components/NavBar";
 
 const TeamPage = () => {
   const { id } = useParams();
@@ -21,13 +21,8 @@ const TeamPage = () => {
 
   return (
     <div>
-      <h1 className="my-4 text-4xl font-bold text-center">Team Page</h1>
-      <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-2 pt-0 p-6">
-        <Link href="/" className="col-span-full">
-          <span className="border-b-2 text-blue-400 font-bold m-auto">
-            Back to Teams
-          </span>
-        </Link>
+      <NavBar />
+      <div className="max-w-[1200px] m-auto pt-0 p-4">
         {teamInfo.map((team) => (
           <div key={team.id}>
             <p>{team.abbreviation}</p>

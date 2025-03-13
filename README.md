@@ -8,6 +8,7 @@ Standings: Access current league standings.
 
 Schedule: Get details about game schedules.
 /api/v1/schedule?sportId=1 = today's games
+https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2025-03-13 tomorrow format
 
 Game: Fetch information about specific games.
 /api/v1/game/{gamePk}

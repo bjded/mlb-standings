@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchTeams } from "@/utils/api";
+import NavBar from "@/components/NavBar";
 import TeamCard from "@/components/TeamCard";
 
 export default function Home() {
@@ -18,8 +19,8 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="my-4 text-4xl font-bold text-center">MLB Teams</h1>
-      <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-2 pt-0 p-6">
+      <NavBar />
+      <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-2 pt-0 p-4 box-border">
         {teams.map((team) => (
           <TeamCard
             key={team.id}
