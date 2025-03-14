@@ -20,11 +20,13 @@ const TeamCard = ({
         />
         <p className="mt-3 mb-3 text-[1.2rem] font-bold">{teamName}</p>
         <p
-          className={`rounded-sm px-2 py-1 font-semibold bg-white text-[0.75rem] text-black tracking-wide ${
+          className={`rounded-sm px-2 py-1 font-semibold bg-white text-[0.7rem] text-black tracking-wide ${
             teamLeagueId == 103 ? "text-red-600" : "text-blue-600"
           }`}
         >
-          {teamDivisionName}
+          {teamDivisionName
+            .replace(/American League/, "AL")
+            .replace(/National League/, "NL")}
         </p>
       </div>
     </Link>
