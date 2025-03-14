@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "MLB Standings",
-  description: "...",
+  description: "A fanmade web application to display various MLB season data.",
 };
 
 export default function RootLayout({ children }) {
