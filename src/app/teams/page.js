@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <div className="max-w-[1200px] m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-3 pt-0 p-4 box-border">
+      <div className="max-w-[1200px] my-8 m-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center items-center gap-3 px-8 box-content">
         {teams.map((team) => (
           <TeamCard
             key={team.id}

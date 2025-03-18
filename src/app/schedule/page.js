@@ -21,7 +21,7 @@ const SchedulePage = () => {
   return (
     <div>
       <NavBar />
-      <div className="max-w-[1200px] m-auto grid grid-cols-1 md:grid-cols-2 gap-3 pt-0 p-4">
+      <div className="max-w-[1200px] my-8 m-auto grid grid-cols-1 md:grid-cols-2 gap-3 px-8 box-content">
         {schedule.map((game) => (
           <div
             key={game.gamePk}
