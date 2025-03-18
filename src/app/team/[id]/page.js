@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fetchTeamById } from "@/utils/api";
 import NavBar from "@/components/NavBar";
+import Row from "@/components/Row";
 
 const TeamPage = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const TeamPage = () => {
   return (
     <div>
       <NavBar />
-      <div className="max-w-[1200px] m-auto pt-0 p-4">
+      <Row>
         {teamInfo.map((team) => (
           <div key={team.id}>
             <p>{team.abbreviation}</p>
@@ -36,7 +37,7 @@ const TeamPage = () => {
             <p>{team.venue.name}</p>
           </div>
         ))}
-      </div>
+      </Row>
     </div>
   );
 };

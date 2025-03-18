@@ -7,7 +7,10 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <Row>Home</Row>
+      <Row>
+        Team standings are coming soon. In the meantime, check out the Teams and
+        Schedule pages. :)
+      </Row>
     </div>
   );
 }

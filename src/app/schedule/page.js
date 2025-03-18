@@ -25,14 +25,14 @@ const SchedulePage = () => {
         {schedule.map((game) => (
           <div
             key={game.gamePk}
-            className="flex-col justify-center items-center border-1 border-white rounded-sm p-4 bg-transparent"
+            className="flex-col justify-center items-center border-1 border-[#b5118f3f] rounded-sm p-4 bg-transparent"
           >
             <p className="mb-1 font-semibold text-gray-300">
               {game.status.detailedState}
             </p>
             {/* Home Team */}
             <div className="mb-1 flex justify-between items-center">
-              <p className="flex justify-center items-center gap-2 text-xl font-bold text-white">
+              <p className="flex justify-center items-center gap-2 lg:text-2xl md:text-xl font-bold text-white">
                 <img
                   src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${game.teams.home.team.id}.svg`}
                   alt={game.teams.home.team.name}
@@ -45,9 +45,9 @@ const SchedulePage = () => {
                 </span>
               </p>
               <p
-                className={`text-3xl font-extrabold ${
+                className={`text-2xl lg:text-3xl font-extrabold ${
                   game.teams.home.isWinner == true
-                    ? "text-purple-400"
+                    ? "text-yellow-300"
                     : "text-white"
                 }`}
               >
@@ -56,7 +56,7 @@ const SchedulePage = () => {
             </div>
             {/* Away Team */}
             <div className="flex justify-between items-center">
-              <p className="flex justify-center items-center gap-2 text-xl font-bold text-white">
+              <p className="flex justify-center items-center gap-2 lg:text-2xl md:text-xl font-bold text-white">
                 <img
                   src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${game.teams.away.team.id}.svg`}
                   alt={game.teams.away.team.name}
@@ -69,28 +69,19 @@ const SchedulePage = () => {
                 </span>
               </p>
               <p
-                className={`text-3xl font-extrabold ${
+                className={`text-2xl lg:text-3xl font-extrabold ${
                   game.teams.away.isWinner == true
-                    ? "text-purple-400"
+                    ? "text-yellow-300"
                     : "text-white"
                 }`}
               >
                 {game.teams.away.score ?? 0}
               </p>
             </div>
-            <p className="mt-2 rounded-sm px-2 py-1 text font-bold text-right text-white">
+            <p className="mt-2 rounded-sm px-2 py-1 sm:text-[0.9rem] text-[0.8rem] font-bold text-right text-gray-300">
               {new Date(game.gameDate).toLocaleString()}
             </p>
           </div>
-
-          // <div key={game.gamePk} className="max-w-[1200px] m-auto pt-0 p-4">
-          //   <p>{new Date(game.gameDate).toLocaleString()}</p>
-          //   <p>
-          //     ({game.teams.home.score}) {game.teams.home.team.name} vs. (
-          //     {game.teams.away.score}) {game.teams.away.team.name}
-          //   </p>
-          //   <p>{game.status.detailedState}</p>
-          // </div>
         ))}
       </div>
     </div>
