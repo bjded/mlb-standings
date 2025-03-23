@@ -4,6 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { fetchSchedule } from "@/utils/api";
 import NavBar from "@/components/NavBar";
+import TeamScore from "@/components/TeamScore";
 
 const SchedulePage = () => {
   const [schedule, setSchedule] = useState([]);
@@ -11,12 +12,11 @@ const SchedulePage = () => {
   useEffect(() => {
     const loadScheduleData = async () => {
       const scheduleData = await fetchSchedule();
-      console.log(scheduleData);
       setSchedule(scheduleData);
     };
 
     loadScheduleData();
-  }, []); // Empty array to only run once
+  }, []);
 
   return (
     <div>
@@ -30,56 +30,37 @@ const SchedulePage = () => {
             <p className="mb-1 font-semibold text-gray-300">
               {game.status.detailedState}
             </p>
+
             {/* Home Team */}
-            <div className="mb-1 flex justify-between items-center">
-              <p className="flex justify-center items-center gap-2 lg:text-2xl md:text-xl font-bold text-white">
-                <img
-                  src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${game.teams.home.team.id}.svg`}
-                  alt={game.teams.home.team.name}
-                  className="w-6 aspect-square"
-                />
-                {game.teams.home.team.name}
-                <span className="text-[0.9rem] font-semibold color-gray-300">
-                  ({game.teams.home?.leagueRecord?.wins}-
-                  {game.teams.home?.leagueRecord?.losses})
-                </span>
-              </p>
-              <p
-                className={`text-2xl lg:text-3xl font-extrabold ${
-                  game.teams.home.isWinner == true
-                    ? "text-yellow-300"
-                    : "text-white"
-                }`}
-              >
-                {game.teams.home.score ?? 0}
-              </p>
-            </div>
+            <TeamScore
+              key={game.teams.home.team.id}
+              teamId={game.teams.home.team.id}
+              teamName={game.teams.home.team.name}
+              teamWins={game.teams.home?.leagueRecord?.wins}
+              teamLosses={game.teams.home?.leagueRecord?.losses}
+              isWinner={game.teams.home.isWinner}
+              teamScore={game.teams.home.score}
+            />
+
             {/* Away Team */}
-            <div className="flex justify-between items-center">
-              <p className="flex justify-center items-center gap-2 lg:text-2xl md:text-xl font-bold text-white">
-                <img
-                  src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${game.teams.away.team.id}.svg`}
-                  alt={game.teams.away.team.name}
-                  className="w-6 aspect-square"
-                />
-                {game.teams.away.team.name}
-                <span className="text-[0.9rem] font-semibold color-gray-300">
-                  ({game.teams.away?.leagueRecord?.wins}-
-                  {game.teams.away?.leagueRecord?.losses})
-                </span>
-              </p>
-              <p
-                className={`text-2xl lg:text-3xl font-extrabold ${
-                  game.teams.away.isWinner == true
-                    ? "text-yellow-300"
-                    : "text-white"
-                }`}
-              >
-                {game.teams.away.score ?? 0}
-              </p>
-            </div>
+            <TeamScore
+              key={game.teams.away.team.id}
+              teamId={game.teams.away.team.id}
+              teamName={game.teams.away.team.name}
+              teamWins={game.teams.away?.leagueRecord?.wins}
+              teamLosses={game.teams.away?.leagueRecord?.losses}
+              isWinner={game.teams.away.isWinner}
+              teamScore={game.teams.away.score}
+            />
+
             <p className="mt-2 rounded-sm px-2 py-1 sm:text-[0.9rem] text-[0.8rem] font-bold text-right text-gray-300">
-              {new Date(game.gameDate).toLocaleString()}
+              {new Date(game.gameDate).toLocaleTimeString([], {
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                timeZoneName: "short",
+              })}
             </p>
           </div>
         ))}

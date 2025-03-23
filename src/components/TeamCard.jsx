@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const TeamCard = ({
   teamId,
@@ -13,10 +14,12 @@ const TeamCard = ({
       <div
         className={`${teamAbbreviation.toLowerCase()} flex flex-col justify-center items-center px-4 pt-8 pb-7 rounded-xl hover:scale-[103%] hover:transition-transform bg-gray-900 text-gray-100 text-center`}
       >
-        <img
+        <Image
           src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${teamId}.svg`}
           alt={teamName}
-          className="h-14"
+          width={50}
+          height={50}
+          className="w-auto h-14"
         />
         <p className="mt-3 mb-3 text-[1.2rem] font-bold">{teamName}</p>
         <p
