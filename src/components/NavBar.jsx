@@ -19,7 +19,7 @@ const NavBar = () => {
           <li
             className={path == "/schedule" ? "border-1 border-[#b5118f7f]" : ""}
           >
-            <Link href="/schedule">Schedule</Link>
+            <Link href="/scores">Scores</Link>
           </li>
         </ul>
       </nav>
