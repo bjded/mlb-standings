@@ -13,11 +13,11 @@ const TeamScore = ({
     <div className="mb-1 flex justify-between items-center">
       <p className="flex justify-center items-center gap-2 text-[1.1rem] lg:text-2xl md:text-xl font-bold text-white">
         <Image
-          src={`https://www.mlbstatic.com/team-logos/team-cap-on-dark/${teamId}.svg`}
+          src={`https://www.mlbstatic.com/team-logos/team-cap-on-light/${teamId}.svg`}
           alt={teamName}
           width={24}
           height={24}
-          className="w-6 h-auto aspect-square"
+          className="w-8 h-auto aspect-square mr-1 rounded-sm p-1 bg-gray-50"
         />
         {teamName}
         <span className="text-[0.9rem] font-semibold color-gray-300">
