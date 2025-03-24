@@ -48,7 +48,7 @@ export default function Home() {
     <div>
       <NavBar />
       <Row>
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-center md:justify-end sm:mb-0 mb-5">
           <label htmlFor="current-year" className="mr-2 font-bold">
             Current Year:{" "}
           </label>
