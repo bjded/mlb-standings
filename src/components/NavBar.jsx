@@ -17,7 +17,7 @@ const NavBar = () => {
             <Link href="/teams">Teams</Link>
           </li>
           <li
-            className={path == "/schedule" ? "border-1 border-[#b5118f7f]" : ""}
+            className={path == "/scores" ? "border-1 border-[#b5118f7f]" : ""}
           >
             <Link href="/scores">Scores</Link>
           </li>

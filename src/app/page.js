@@ -36,6 +36,14 @@ export default function Home() {
     }
   };
 
+  const incrementYear = () => {
+    setSelectedYear((prevYear) => Math.min(prevYear + 1, currentYear));
+  };
+
+  const decrementYear = () => {
+    setSelectedYear((prevYear) => Math.max(prevYear - 1, 2000));
+  };
+
   return (
     <div>
       <NavBar />
@@ -44,15 +52,29 @@ export default function Home() {
           <label htmlFor="current-year" className="mr-2 font-bold">
             Current Year:{" "}
           </label>
-          <input
-            id="current-year"
-            type="number"
-            value={selectedYear}
-            onChange={handleInputChange}
-            className="border-1 border-[#b5118f3f] rounded-sm w-18 p-1 pl-2"
-            min="2000"
-            max={currentYear}
-          />
+          <div className="flex items-center">
+            <button
+              onClick={decrementYear}
+              className="px-4 py-1 border border-gray-400 rounded-l font-bold bg-[#b5118f3f] text-white hover:cursor-pointer"
+            >
+              -
+            </button>
+            <input
+              id="current-year"
+              type="number"
+              value={selectedYear}
+              onChange={handleInputChange}
+              className="border-t border-b border-gray-400 w-24 p-1 pl-4 text-center"
+              min="2000"
+              max={currentYear}
+            />
+            <button
+              onClick={incrementYear}
+              className="px-4 py-1 border border-gray-400 rounded-r font-bold bg-[#b5118f3f] text-white hover:cursor-pointer"
+            >
+              +
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6">
