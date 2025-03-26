@@ -25,16 +25,47 @@ const TeamPage = () => {
       <NavBar />
       <Row>
         {teamInfo.map((team) => (
-          <div key={team.id}>
-            <p>{team.abbreviation}</p>
-            <p>{team.active}</p>
-            <p>{team.clubName}</p>
-            <p>{team.division.name}</p>
-            <p>{team.firstYearOfPlay}</p>
-            <p>{team.league.name}</p>
-            <p>{team.locationName}</p>
-            <p>{team.springLeague.name}</p>
-            <p>{team.venue.name}</p>
+          <div key={team.id} className="*:pb-4 text-center">
+            <p>
+              <span className="font-bold block text-yellow-300">
+                Team Name:
+              </span>{" "}
+              {team.clubName}
+            </p>
+            <p>
+              <span className="font-bold block text-yellow-300">
+                Abbreviation:
+              </span>{" "}
+              {team.abbreviation}
+            </p>
+            <p>
+              <span className="font-bold block text-yellow-300">
+                Established:
+              </span>{" "}
+              {team.firstYearOfPlay}
+            </p>
+            {/* <p>Status: {team.active}</p> */}
+            <p>
+              <span className="font-bold block text-yellow-300">Division:</span>{" "}
+              {team.division.name}
+            </p>
+            <p>
+              <span className="font-bold block text-yellow-300">
+                Spring Training:
+              </span>{" "}
+              {team.springLeague.name}
+            </p>
+            {/* <p>{team.league.name}</p> */}
+            <p>
+              <span className="font-bold block text-yellow-300">
+                Stadium Name:
+              </span>{" "}
+              {team.venue.name}
+            </p>
+            <p>
+              <span className="font-bold block text-yellow-300">Located:</span>{" "}
+              {team.locationName}
+            </p>
           </div>
         ))}
       </Row>

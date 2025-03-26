@@ -12,6 +12,7 @@ const SchedulePage = () => {
   useEffect(() => {
     const loadScheduleData = async () => {
       const scheduleData = await fetchSchedule();
+      console.log(scheduleData);
       setSchedule(scheduleData);
     };
 
@@ -22,6 +23,14 @@ const SchedulePage = () => {
     <div>
       <NavBar />
       <div className="max-w-[1200px] my-8 m-auto grid grid-cols-1 md:grid-cols-2 gap-3 px-8 box-content">
+        {!schedule.length ? (
+          <p className="col-start-1 col-end-[-1] text-center">
+            No games are scheduled to be played today.. 🥹
+          </p>
+        ) : (
+          ""
+        )}
+
         {schedule.map((game) => (
           <div
             key={game.gamePk}

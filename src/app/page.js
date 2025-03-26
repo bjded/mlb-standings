@@ -7,6 +7,7 @@ import Row from "@/components/Row";
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
+  const minimumYear = currentYear - 10;
   const [standing, setStanding] = useState([]);
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
@@ -22,6 +23,7 @@ export default function Home() {
   useEffect(() => {
     const loadStandingData = async () => {
       const standingData = await fetchStandings(selectedYear);
+      console.log(standingData);
       setStanding(standingData);
     };
 
@@ -31,7 +33,7 @@ export default function Home() {
   const handleInputChange = (e) => {
     let newYear = parseInt(e.target.value, 10);
     if (!isNaN(newYear)) {
-      newYear = Math.min(Math.max(newYear, 2000), currentYear);
+      newYear = Math.min(Math.max(newYear, minimumYear), currentYear);
       setSelectedYear(newYear);
     }
   };
@@ -41,14 +43,14 @@ export default function Home() {
   };
 
   const decrementYear = () => {
-    setSelectedYear((prevYear) => Math.max(prevYear - 1, 2000));
+    setSelectedYear((prevYear) => Math.max(prevYear - 1, minimumYear));
   };
 
   return (
     <div>
       <NavBar />
       <Row>
-        <div className="flex items-center justify-center md:justify-end sm:mb-0 mb-5">
+        <div className="flex items-center justify-center md:justify-end">
           <label htmlFor="current-year" className="mr-2 font-bold">
             Current Year:{" "}
           </label>
@@ -61,11 +63,11 @@ export default function Home() {
             </button>
             <input
               id="current-year"
-              type="number"
+              type="text"
               value={selectedYear}
               onChange={handleInputChange}
-              className="border-t border-b border-gray-400 w-24 p-1 pl-4 text-center"
-              min="2000"
+              className="border-t border-b border-gray-400 w-16 p-1 text-center"
+              min={minimumYear}
               max={currentYear}
             />
             <button
@@ -76,6 +78,9 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <p className="my-3 md:my-2 text-[0.9rem] text-center md:text-right">
+          You can view the 10 most recent seasons! 🤓
+        </p>
 
         <div className="grid grid-cols-1 gap-6">
           {divisions.map((division, index) => (
@@ -85,16 +90,21 @@ export default function Home() {
                 {standing.slice(index * 5, index * 5 + 5).map((team) => (
                   <div
                     key={team.team.id}
-                    className="border-1 border-[#b5118f3f] rounded-sm p-4"
+                    className="*:py-1 border-1 border-[#b5118f3f] rounded-sm p-4 text-center"
                   >
-                    <p className="text-[1.2rem] font-semibold">
+                    <p className="text-[1.1rem] font-semibold text-yellow-300">
                       {team.team.name}
                     </p>
-                    <p className="font-bold">
-                      Record: ({team.leagueRecord.wins} -{" "}
-                      {team.leagueRecord.losses})
+                    <p className="font-bold text-xl">
+                      ({team.leagueRecord.wins} - {team.leagueRecord.losses})
                     </p>
-                    <p className="font-semibold">{team.leagueRecord.pct}%</p>
+                    <p className="font-bold text-[1.1rem]">
+                      {team.leagueRecord.pct}%
+                    </p>
+                    <p className="font-semibold text-[0.9rem]">
+                      Games Behind:{" "}
+                      {team.gamesBack === "-" ? "0.0" : team.gamesBack}
+                    </p>
                   </div>
                 ))}
               </div>

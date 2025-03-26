@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const path = usePathname();
+  console.log(path);
 
   return (
     <header className="w-full bg-[#b5118f14] border-b-[#b5118f3f] border-b-1 p-4 md:p-8 box-border">
@@ -13,7 +14,13 @@ const NavBar = () => {
           <li className={path == "/" ? "border-1 border-[#b5118f7f]" : ""}>
             <Link href="/">Home</Link>
           </li>
-          <li className={path == "/teams" ? "border-1 border-[#b5118f7f]" : ""}>
+          <li
+            className={
+              path == "/teams" || path.includes("team")
+                ? "border-1 border-[#b5118f7f]"
+                : ""
+            }
+          >
             <Link href="/teams">Teams</Link>
           </li>
           <li
